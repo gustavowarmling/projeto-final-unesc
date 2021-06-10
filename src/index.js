@@ -29,7 +29,8 @@ app.get('*', (req, res) => {
 res.redirect('/');
 });
 
-app.listen(3333, () => {
+server.listen(3333, () => {
 // eslint-disable-next-line no-console
-console.log(`🚀 Servidor iniciado na porta ${PORT}!`);
+console.log(`🚀 Servidor iniciado na porta 3333!`);
 });
+
