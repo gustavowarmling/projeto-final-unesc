@@ -21,4 +21,15 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-server.listen(3333);
+app.get('/', (req, res) => {
+    res.send('Status: Online!');
+  });
+  
+app.get('*', (req, res) => {
+res.redirect('/');
+});
+
+app.listen(3333, () => {
+// eslint-disable-next-line no-console
+console.log(`🚀 Servidor iniciado na porta ${PORT}!`);
+});
