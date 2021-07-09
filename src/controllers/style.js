@@ -21,14 +21,18 @@ module.exports = {
             id,
         } = request.params;
 
-        let style = await Style.findById({ id });
+       try {
+            const style = await Style.findById({ id });
 
-        if (!style) {
-            response.status(401)
-                .json({ error: 'Estilo não encontrado' });
-        };
+            if (!style) {
+                response.status(401)
+                    .json({ error: 'Estilo não encontrado' });
+            };
 
-        return response.json(style);
+            return response.json(style);
+       } catch (error) {
+            return response.status(400).json({ error });
+       }
     },
 
     async create(request, response) {
