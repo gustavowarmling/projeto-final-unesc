@@ -47,12 +47,14 @@ module.exports = {
             };
 
             const {
+                _id,
                 nome,
                 social,
                 nascimento,
             } = designer;
 
             const designerToShow = {
+                _id,
                 nome,
                 social,
                 nascimento,
