@@ -46,10 +46,16 @@ module.exports = {
                     .json({ error: 'Marca não encontrada' });
             };
 
-            designer.marca = marca.data;
+            const {
+                nome,
+                social,
+                nascimento,
+            } = designer;
 
             const designerToShow = {
-                ...designer,
+                nome,
+                social,
+                nascimento,
                 marca: marca.data,
             };
 
