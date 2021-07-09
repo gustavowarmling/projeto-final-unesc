@@ -52,9 +52,9 @@ module.exports = {
     async create(request, response) {
         const { 
             nome,
-            descricao,
-            ano,
-            surgimento,
+            social,
+            nascimento,
+            marcaId,
         } = request.body;
 
         try {
@@ -65,14 +65,14 @@ module.exports = {
                 .json({ error: 'Designer, com o nome informado, já cadastrado!' })
             };
 
-            const newStyle = await Designer.create({
+            const newDesigner = await Designer.create({
                 nome,
-                descricao,
-                ano,
-                surgimento,
+                social,
+                nascimento,
+                marcaId,
             });
 
-            return response.json(newStyle);
+            return response.json(newDesigner);
         } catch (error) {
             return response.status(400).json({ error });
         }
@@ -80,7 +80,12 @@ module.exports = {
 
     async update(request, response) {
         const { id } = request.params;
-        const body = request.body;
+        const {
+            nome,
+            social,
+            nascimento,
+            marcaId,
+        } = request.body;
 
         try {
             const designer = await Designer.findOne({ _id: id });
@@ -90,9 +95,16 @@ module.exports = {
                 .json({ error: 'Designer não encontrado' });
             };
     
-            await designer.updateOne(body);
+            await designer.updateOne({
+                nome,
+                social,
+                nascimento,
+                marcaId,
+            });
     
-            return response.json(designer);
+            const modifiedDesigner = await Designer.findOne({ _id: id });
+    
+            return response.json(modifiedDesigner);
         } catch (error) {
             return response.status(400).json({ error });
         }
