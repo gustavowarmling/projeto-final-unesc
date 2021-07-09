@@ -48,7 +48,12 @@ module.exports = {
 
             designer.marca = marca.data;
 
-            return response.json(designer);
+            const designerToShow = {
+                ...designer,
+                marca: marca.data,
+            };
+
+            return response.json(designerToShow);
         } catch (error) {
             return response.status(400).json({ error });
         }
