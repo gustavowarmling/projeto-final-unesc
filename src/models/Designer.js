@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const DesignerSchema = new mongoose.Schema({
     nome: String,
     social: String,
-    nascimento: String,
+    nascimento: Number,
     marcaId: String,
 }, { timestamp: true })
 
