@@ -66,7 +66,12 @@ module.exports = {
 
     async update(request, response) {
         const { id } = request.params;
-        const body = request.body;
+        const {            
+            nome,
+            descricao,
+            ano,
+            surgimento
+        } = request.body;
 
         try {
             const style = await Style.findOne({ _id: id });
@@ -76,9 +81,16 @@ module.exports = {
                 .json({ error: 'Estilo não encontrado' });
             };
     
-            await style.updateOne(body);
+            await style.updateOne({            
+                nome,
+                descricao,
+                ano,
+                surgimento
+            });
+
+            const modifiedStyle = await Style.findOne({ _id: id });
     
-            return response.json({style, ...body});
+            return response.json(modifiedStyle);
         } catch (error) {
             return response.status(400).json({ error });
         }
