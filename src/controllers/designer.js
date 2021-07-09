@@ -41,7 +41,12 @@ module.exports = {
 
             const marca = await api.get(`/brand/${designer.marcaId}`);
 
-            designer.marca = marca?.data;
+            if (!marca) {
+                response.status(401)
+                    .json({ error: 'Marca não encontrada' });
+            };
+
+            designer.marca = marca.data;
 
             return response.json(designer);
         } catch (error) {
