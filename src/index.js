@@ -7,7 +7,8 @@ PORT = process.env.PORT || 3333
 
 mongoose.connect(`mongodb+srv://dbUser:senhamongo@cluster0.qjzlu.mongodb.net/projeto11?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 mongoose.connection.on('connected', () => {
