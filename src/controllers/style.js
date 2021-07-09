@@ -78,7 +78,7 @@ module.exports = {
     
             await style.updateOne(body);
     
-            return response.json(style);
+            return response.json({style, ...body});
         } catch (error) {
             return response.status(400).json({ error });
         }
