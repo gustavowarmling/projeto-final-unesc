@@ -32,7 +32,7 @@ module.exports = {
         } = request.params;
 
         try {
-            let designer = await Designer.findById({ id });
+            let designer = await Designer.findOne({ _id: id });
 
             if (!designer) {
                 response.status(401)
@@ -83,7 +83,7 @@ module.exports = {
         const body = request.body;
 
         try {
-            const designer = await Designer.findById(id);
+            const designer = await Designer.findOne({ _id: id });
 
             if (!designer) {
                 response.status(401)
@@ -104,7 +104,7 @@ module.exports = {
         } = request.params;
 
         try {
-            const designer = await Designer.findById({ id });
+            const designer = await Designer.findOne({ _id: id });
 
             if (!designer) {
                 response.status(401)

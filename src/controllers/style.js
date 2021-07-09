@@ -22,7 +22,7 @@ module.exports = {
         } = request.params;
 
        try {
-            const style = await Style.findById({ id });
+            const style = await Style.findOne({ _id: id });
 
             if (!style) {
                 response.status(401)
@@ -69,7 +69,7 @@ module.exports = {
         const body = request.body;
 
         try {
-            const style = await Style.findById(id);
+            const style = await Style.findOne({ _id: id });
 
             if (!style) {
                 response.status(401)
@@ -90,7 +90,7 @@ module.exports = {
         } = request.params;
 
         try {
-            const style = await Style.findById({ id });
+            const style = await Style.findOne({ _id: id });
 
             if (!style) {
                 response.status(401)
